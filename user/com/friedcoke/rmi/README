@@ -1,0 +1,24 @@
+CREATE TABLE [IF NOT EXISTS] users (
+	username VARCHAR ( 50 ) NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+    status VARCHAR ( 50 ) NOT NULL
+);
+
+
+CREATE TABLE carts (
+	username VARCHAR ( 50 ) NOT NULL,
+    auction VARCHAR ( 50 ) NOT NULL
+);
+
+CREATE TABLE watchlists (
+	username VARCHAR ( 50 ) NOT NULL,
+    auction VARCHAR ( 50 ) NOT NULL
+);
+
+These are code for user microservice.
+Use postgres to store user information.
+Use jdbc to communicate with database.
+Implement add, get, delete and update of a user.
+Can add or remove an auction from the watchlist of a user.
+can get the watchlist and cart of a user.
+
