@@ -1,7 +1,7 @@
 # friedcoke
 
-## Team Member
-Chaoqin Li <chaoqinli@uchicago.edu>\
-Tianda Liu <tliu77@uchicago.edu>\
-Sihan Li <samli@uchicago.edu>\
-Sunan Xiang <xsunan@uchicago.edu>
+## Team Member & Distribution
+Chaoqin Li <chaoqinli@uchicago.edu> - User System\
+Tianda Liu <tliu77@uchicago.edu> - Web Server, Metadata\
+Sihan Li <samli@uchicago.edu> - Notification System\
+Sunan Xiang <xsunan@uchicago.edu> - Auction System

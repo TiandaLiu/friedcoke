@@ -20,6 +20,17 @@ public class FakeFriedCokeMetadataServer extends UnicastRemoteObject implements 
     Map<UUID, String> categoryMap = new HashMap<>();
     Map<String, String> userMap = new HashMap<>();
 
+    static public void main(String args[])
+    {
+        try{
+            FakeFriedCokeMetadataServer s=new FakeFriedCokeMetadataServer();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
 
     @Override
     public int addAuction(String auctionJson) throws RemoteException {
@@ -168,15 +179,4 @@ public class FakeFriedCokeMetadataServer extends UnicastRemoteObject implements 
         }
     }
 
-    static public void main(String args[])
-    {
-        try{
-            FakeFriedCokeMetadataServer s=new FakeFriedCokeMetadataServer();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-    }
 }
-

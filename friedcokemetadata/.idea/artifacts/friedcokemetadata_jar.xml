@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="friedcokemetadata:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/friedcokemetadata_jar</output-path>
+    <root id="archive" name="friedcokemetadata.jar">
+      <element id="module-output" name="friedcokemetadata" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/gson-2.8.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
