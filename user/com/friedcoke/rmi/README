@@ -1,3 +1,14 @@
+prepare the user service container.
+
+export CLASSPATH=/home/student/friedcoke/friedcokemetadata/gson-2.8.6.jar:. 
+// compile and run the user rmi server.
+javac com/friedcoke/rmi/UserRMIServer.java 
+java com/friedcoke/rmi/UserRMIServer
+
+psql --username postgres
+create database userinfo;
+\c userinfo;
+// create tables.
 CREATE TABLE [IF NOT EXISTS] users (
 	username VARCHAR ( 50 ) NOT NULL,
 	password VARCHAR ( 50 ) NOT NULL,
