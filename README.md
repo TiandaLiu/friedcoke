@@ -28,9 +28,9 @@ open a new terminal, run:
 
 in the container: 
 
-    java -jar /friedcoke/webserver/target/webserver-0.0.1-SNAPSHOT.jar
+    java -jar /friedcoke/webserver/webserver-0.0.1-SNAPSHOT.jar
 
-Run Wenserver:
+Run Webserver:
 
 open a new terminal, run 
 
@@ -38,4 +38,4 @@ open a new terminal, run
 
 in the container:
 
-    java -jar /friedcoke/friedcokemetadata/out/artifacts/friedcokemetadata_jar/friedcokemetadata.jar
+    java -jar /friedcoke/friedcokemetadata/friedcokemetadata.jar
