@@ -1,39 +1,49 @@
 package com.friedcoke.rmi;
 
+import com.google.gson.Gson;
+
 public class User {
-    private String username;
+
+    private final String username;
     private String password;
     private String status;
-    User(String userStr) {
-        String[] strs = userStr.split(" ");
-        username = strs[0];
-        password = strs[1];
-        status = strs[2];
-    }
-    User(String username, String password, String status) {
+
+    public User(
+            String username,
+            String password,
+            String status) {
         this.username = username;
         this.password = password;
         this.status = status;
     }
-    void setUsername(String username_) {
-        username = username_;
-    }
-    void setPassword(String password_) {
-        password = password_;
-    }
-    void setStatus(String status_) {
-        status = status_;
-    }
-    String getUsername() {
+
+    public String getUsername() {
         return username;
     }
-    String getPassword() {
+
+    public String getPassword() {
         return password;
     }
-    String getStatus() {
+
+    public String getStatus() {
         return status;
     }
-    public String toString() {
-        return username + " " + password + " " + status;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public static User fromJson(String userJson) {
+        Gson gson = new Gson();
+        return gson.fromJson(userJson, User.class);
     }
 }
