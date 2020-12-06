@@ -1,5 +1,6 @@
 package com.friedcoke.rmi;
 
+import com.google.gson.Gson;
 import java.rmi.*;
 import java.rmi.registry.*;
 import java.rmi.server.*;
@@ -17,7 +18,7 @@ implements UserRemoteInterface
     Connection conn = null;
 
     public int addUser(String userStr) throws RemoteException {
-        User user = new User(userStr);
+        User user = User.fromJson(userStr);
         String username = user.getUsername();
         String password = user.getPassword();
         String status = user.getStatus();
@@ -56,7 +57,7 @@ implements UserRemoteInterface
     }
 
     public int updateUser(String userId, String newUserStr) throws RemoteException {
-        User user = new User(newUserStr);
+        User user = User.fromJson(newUserStr);
         String username = user.getUsername();
         String password = user.getPassword();
         String status = user.getStatus();
@@ -79,7 +80,7 @@ implements UserRemoteInterface
      
 
     public String getUserById(String username) throws RemoteException {
-        User user;
+        User user = new User(username, "", "");
         Statement stmt = null;
         ResultSet rs = null;
         try {
@@ -89,7 +90,7 @@ implements UserRemoteInterface
             rs.next();
             String password = rs.getString("password");
             String status = rs.getString("status");
-            return new User(username, password, status).toString();
+            return new User(username, password, status).toJson();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -226,7 +227,7 @@ implements UserRemoteInterface
         catch(Exception e){
             throw new RemoteException("can't get inet address.");
         }
-	    port=12345;  // our port
+	    port=12344;  // our port
         System.out.println("using address="+address+",port="+port);
         try{
             // create the registry and bind the name and object.
@@ -249,7 +250,7 @@ implements UserRemoteInterface
         try{
             UUID uid = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
             UserRMIServer s=new UserRMIServer();
-            s.addUser("b b c");
+            s.addUser((new User("a", "b", "c")).toJson());
             System.out.println(s.getUserById("b"));
             s.addAuctionToCart("b", uid);
             s.getCart("b");
