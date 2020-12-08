@@ -35,6 +35,9 @@ public interface FriedCokeMetadataInterface extends Remote
     int removeAuctionFromCart(String userId, UUID auctionId) throws RemoteException;
     List<UUID> getCart(String userId) throws RemoteException; // return a list of auctionId
 
+    // Notification
+    int addNotification(String notificationJson) throws RemoteException;
+    List<String> getAllNotifications() throws RemoteException;
 
     // Call by Auction Server
     int auctionCompleted(String highest_bidder, UUID auction_id) throws RemoteException;

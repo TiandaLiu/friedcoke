@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">FriedCoke</a>
+</nav>
+<div class="container">
+  <div class="row">
+<!--    <div class="col-4">-->
+<!--      <h1>Users</h1>-->
+<!--    </div>-->
+    <div class="col-6">
+      <h1>Auctions</h1>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let auction of auctions">
+          <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="card-body row">
+
+
+              <div class="col ml-3 mr-3">
+                <div class="row">
+                  <a routerLink="/auction/{{auction.id}}">
+                    <h2 class="card-title">{{auction.item_name}}</h2>
+                  </a>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <button type="button" class="btn btn-danger" style="width: 10rem;" (click)="terminateAuction(auction.id)">terminate</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <h1>Emails</h1>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let email of emails">
+          <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="card-body row">
+              <div class="col ml-3 mr-3">
+                <div class="row">
+                  <!--                  <a routerLink="/auction/{{auction.id}}">-->
+                  <h2 class="card-title">{{email.subject}}</h2>
+                  <!--                  </a>-->
+                </div>
+                <div class="row">
+                  <h3 class="d-flex justify-content-start">Sent by {{email.sender}}</h3>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <button type="button" class="btn btn-primary" style="width: 10rem;" routerLink="/new-email">Reply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

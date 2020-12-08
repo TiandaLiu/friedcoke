@@ -119,6 +119,15 @@ public class FriedCokeMetadataServer extends UnicastRemoteObject implements Frie
         return 0;
     }
 
+    @Override
+    public int addNotification(String notificationJson) throws RemoteException {
+        return 0;
+    }
+
+    @Override
+    public List<String> getAllNotifications() throws RemoteException {
+        return null;
+    }
 
     public FriedCokeMetadataServer() throws RemoteException
     {
@@ -129,7 +138,7 @@ public class FriedCokeMetadataServer extends UnicastRemoteObject implements Frie
         catch(Exception e){
             throw new RemoteException("can't get inet address.");
         }
-        port=12345;  // our port
+        port=12348;  // our port
         System.out.println("using address="+address+",port="+port);
         try{
             // create the registry and bind the name and object.
@@ -144,7 +153,7 @@ public class FriedCokeMetadataServer extends UnicastRemoteObject implements Frie
     static public void main(String args[])
     {
         try{
-            FakeFriedCokeMetadataServer s=new FakeFriedCokeMetadataServer();
+            FriedCokeMetadataServerT s=new FriedCokeMetadataServerT();
         }
         catch (Exception e) {
             e.printStackTrace();

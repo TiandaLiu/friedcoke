@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">FriedCoke</a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Your Watchlist</h1>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let auction of watchlist">
+          <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="card-body row">
+
+              <div class="">
+                <img src="https://img.icons8.com/plasticine/100/000000/full-image.png"
+                     style="width: 10rem;height: 10rem;"/>
+              </div>
+
+              <div class="col ml-3 mr-3">
+                <div class="row">
+                  <a routerLink="/auction/{{auction.id}}">
+                    <h2 class="card-title">{{auction.item_name}}</h2>
+                  </a>
+                </div>
+                <div class="row">
+                  <h3 class="d-flex justify-content-start">{{auction.description}}</h3>
+                </div>
+                <div class="row">
+                  <h2>Current Price: ${{auction.curr_price}}</h2>
+                </div>
+                <div class="row">
+                  <h3>Category: {{auction.category}}</h3>
+                  <h3 class="ml-5">Start time: {{auction.startTime}}</h3>
+                  <h3 class="ml-5">End time: {{auction.endTime}}</h3>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

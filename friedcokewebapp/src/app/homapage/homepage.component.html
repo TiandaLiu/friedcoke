@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">FriedCoke</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" *ngIf="loginInfo">
+          <a class="nav-link" routerLink="/account">Account</a>
+        </li>
+<!--        <li class="nav-item" *ngIf="loginInfo">-->
+<!--          <a class="nav-link" href="#">Watchlist</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item" *ngIf="loginInfo">-->
+<!--          <a class="nav-link" href="#">Shopping Cart</a>-->
+<!--        </li>-->
+      </ul>
+      <div *ngIf="!loginInfo">
+        <a class="nav-link" routerLink="/login">{{loginInfo}}login</a>
+      </div>
+      <div *ngIf="loginInfo">
+        <a class="nav-link " routerLink="/success" (click)="logout()">{{loginInfo}}, logout</a>
+      </div>
+      <form class="form-inline my-2 my-lg-0">
+        <input [(ngModel)]="keyword" name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="getAuctionsByKeyword()">Search</button>
+      </form>
+    </div>
+  <div></div>
+</nav>
+
+<div class="container">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let auction of auctions">
+      <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="card-body row">
+
+          <div class="">
+            <img src="https://img.icons8.com/plasticine/100/000000/full-image.png"
+                 style="width: 10rem;height: 10rem;"/>
+          </div>
+
+          <div class="col ml-3 mr-3">
+            <div class="row">
+              <a routerLink="/auction/{{auction.id}}">
+                <h2 class="card-title">{{auction.item_name}}</h2>
+              </a>
+            </div>
+            <div class="row">
+              <h3 class="d-flex justify-content-start">{{auction.description}}</h3>
+            </div>
+            <div class="row">
+              <h2>Current Price: ${{auction.curr_price}}</h2>
+            </div>
+            <div class="row">
+              <h3>Category: {{auction.category}}</h3>
+              <h3 class="ml-5">Start time: {{auction.startTime}}</h3>
+              <h3 class="ml-5">End time: {{auction.endTime}}</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

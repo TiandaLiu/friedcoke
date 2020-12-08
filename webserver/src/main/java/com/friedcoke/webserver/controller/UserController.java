@@ -1,5 +1,6 @@
 package com.friedcoke.webserver.controller;
 
+import com.friedcoke.webserver.model.Auction;
 import com.friedcoke.webserver.model.User;
 import com.friedcoke.webserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/user")
+@CrossOrigin()
 public class UserController {
 
     private final UserService userService;
@@ -67,6 +69,7 @@ public class UserController {
 
     @PostMapping(path = "{userId}/watchlist/{auctionId}")
     public int addAuctionToWatchlist(@PathVariable("userId") String userId, @PathVariable("auctionId") UUID auctionId) {
+        System.out.println("add auction to watchlist");
         return userService.addAuctionToWatchlist(userId, auctionId);
     }
 
@@ -76,7 +79,8 @@ public class UserController {
     }
 
     @GetMapping(path = "{userId}/watchlist")
-    public List<UUID> getWatchlist(@PathVariable("userId") String userId) {
+    public List<Auction> getWatchlist(@PathVariable("userId") String userId) {
+        System.out.println("get watchlist");
         return userService.getWatchlist(userId);
     }
 

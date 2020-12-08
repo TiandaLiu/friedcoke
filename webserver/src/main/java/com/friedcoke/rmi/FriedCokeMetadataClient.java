@@ -12,8 +12,8 @@ public class FriedCokeMetadataClient {
     private Registry registry;
 
     // TODO inject address and port
-    private final String friedCokeMetadataServerAddress = "127.0.0.1";
-    private final String friedCokeMetadataServerPort = "12345";
+    private final String friedCokeMetadataServerAddress = "172.17.0.2";
+    private final String friedCokeMetadataServerPort = "12348";
 
     private FriedCokeMetadataClient() {
         System.out.println("connecting to "+ friedCokeMetadataServerAddress +":"+ friedCokeMetadataServerPort);
@@ -189,6 +189,24 @@ public class FriedCokeMetadataClient {
     public List<UUID> getCart(String userId) {
         try {
             return friedCokeMetadataServer.getCart(userId);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Notification
+    public int addNotification(String notificationJson) {
+        try {
+            return friedCokeMetadataServer.addNotification(notificationJson);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    public List<String> getAllNotifications() {
+        try {
+            return friedCokeMetadataServer.getAllNotifications();
         } catch (RemoteException e) {
             e.printStackTrace();
             return null;

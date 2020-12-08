@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">FriedCoke</a>
+</nav>
+
+<div class="container d-flex justify-content-center">
+  <div class="card mt-5 p-3" style="width: 30rem;">
+    <div class="form-group">
+      <label for="receiver">To: </label>
+      <input [(ngModel)]="email.receiver" class="form-control" id="receiver" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject: </label>
+      <input [(ngModel)]="email.subject" type="text" class="form-control" id="subject">
+    </div>
+    <div class="form-group">
+      <label for="content">Content: </label>
+      <input [(ngModel)]="email.content" type="text" class="form-control" id="content">
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-primary" style="width: 10rem;" (click)="sendEmail()">Send</button>
+    </div>
+  </div>
+</div>

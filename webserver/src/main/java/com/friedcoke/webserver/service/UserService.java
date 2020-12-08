@@ -1,9 +1,11 @@
 package com.friedcoke.webserver.service;
 
 import com.friedcoke.rmi.FriedCokeMetadataClient;
+import com.friedcoke.webserver.model.Auction;
 import com.friedcoke.webserver.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,8 +86,14 @@ public class UserService {
         return removeAuctionFromWatchlist(userId, auctionId);
     }
 
-    public List<UUID> getWatchlist(String userId) {
-        return friedCokeMetadataClient.getWatchlist(userId);
+    public List<Auction> getWatchlist(String userId) {
+        List<UUID> uuidList = friedCokeMetadataClient.getWatchlist(userId);
+        List<Auction> auctions = new ArrayList<>();
+        for (UUID auctionId: uuidList) {
+            String auctionJson =friedCokeMetadataClient.getAuctionById(auctionId);
+            auctions.add(Auction.fromJson(auctionJson));
+        }
+        return auctions;
     }
 
 

@@ -16,8 +16,8 @@ public class UserRMIClient {
     private Registry registry;
 
     // TODO inject address and port
-    private final String friedCokeMetadataServerAddress = "127.0.0.1";
-    private final String friedCokeMetadataServerPort = "12346";
+    private final String friedCokeMetadataServerAddress = "172.17.0.2";
+    private final String friedCokeMetadataServerPort = "12344";
 
     private UserRMIClient() {
         System.out.println("connecting to "+ friedCokeMetadataServerAddress +":"+ friedCokeMetadataServerPort);

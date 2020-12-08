@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/auction")
+@CrossOrigin()
 public class AuctionController {
 
     private final AuctionService auctionService;
@@ -27,9 +28,9 @@ public class AuctionController {
 
     @PutMapping(path = "{id}")
     public int updateAuction(@PathVariable("id") UUID auctionId, @RequestBody Auction newAuction) {
+        System.out.println("put");
         return auctionService.updateAuction(auctionId, newAuction);
     }
-
 
 
     @GetMapping

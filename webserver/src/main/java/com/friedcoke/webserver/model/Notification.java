@@ -1,18 +1,22 @@
 package com.friedcoke.webserver.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
-
-import java.util.UUID;
 
 public class Notification {
 
-    private UUID sender;
-    private UUID receiver;
+    private String sender;
+    private String receiver;
     private String subject;
     private String content;
     private String timestamp;
 
-    public Notification(UUID sender, UUID receiver, String subject, String content, String timestamp) {
+    public Notification(
+            @JsonProperty("sender") String sender,
+            @JsonProperty("receiver") String receiver,
+            @JsonProperty("subject") String subject,
+            @JsonProperty("content") String content,
+            @JsonProperty("timestamp") String timestamp) {
         this.sender = sender;
         this.receiver = receiver;
         this.subject = subject;
@@ -20,31 +24,11 @@ public class Notification {
         this.timestamp = timestamp;
     }
 
-    public UUID getSender() {
-        return sender;
-    }
-
-    public UUID getReceiver() {
-        return receiver;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setSender(UUID sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public void setReceiver(UUID receiver) {
+    public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
 
@@ -58,6 +42,26 @@ public class Notification {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
     }
 
     public String toJson() {
